@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "116050234579",
+    "project_id": "beyond-the-stars-c1c82",
+    "storage_bucket": "beyond-the-stars-c1c82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116050234579:android:c63fd16170c7cdaf6c5826",
+        "android_client_info": {
+          "package_name": "com.example.beyond_the_stars"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADhw_GX4qWUNG0tk_wIGItrH1gJEmN4p0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
