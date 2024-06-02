@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen>
               'assets/splash/splashSpace.json',
               controller: _splashController,
               onLoaded: (complete) {
-                _splashController.duration = complete.duration;
+                _splashController.duration = complete.duration * 0.9;
                 _splashController.forward().whenComplete(() {
                   AppStrings.isOnBoardingDone == true
                       ? Navigator.of(context).pushReplacementNamed(Routes.login)
@@ -62,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen>
               isRepeatingAnimation: false,
               animatedTexts: [
                 WavyAnimatedText('Beyond The Stars',
-                    speed: const Duration(milliseconds: 285),
+                    speed: const Duration(milliseconds: 280),
                     textAlign: TextAlign.center,
                     textStyle: const TextStyle(
                         fontSize: 32, fontWeight: FontWeight.bold)),
