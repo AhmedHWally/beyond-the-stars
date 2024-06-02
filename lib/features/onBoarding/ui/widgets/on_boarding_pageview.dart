@@ -1,5 +1,7 @@
+import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/features/onBoarding/model/on_boarding_itemmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class OnBoardingPageview extends StatelessWidget {
   const OnBoardingPageview(
@@ -22,6 +24,28 @@ class OnBoardingPageview extends StatelessWidget {
                   onboardingItems[index].image,
                 ),
                 fit: BoxFit.fill)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height * 0.15,
+              ),
+              Text(
+                onboardingItems[index].title,
+                style: AppTextStyles.style28Bold,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Text(
+                onboardingItems[index].subtitle,
+                style: AppTextStyles.style18W600,
+              )
+            ],
+          ),
+        ),
       ),
       itemCount: onboardingItems.length,
     );

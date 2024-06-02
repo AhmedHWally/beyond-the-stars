@@ -1,3 +1,6 @@
+import 'package:beyond_the_stars/core/constants/strings.dart';
+import 'package:beyond_the_stars/core/helpers/cache_helper.dart';
+import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingButton extends StatelessWidget {
@@ -23,12 +26,13 @@ class OnBoardingButton extends StatelessWidget {
                 ),
                 onPressed: () {
                   pageController.nextPage(
-                      duration: const Duration(milliseconds: 500),
+                      duration: const Duration(milliseconds: 600),
                       curve: Curves.ease);
                 }),
           )
         : FloatingActionButton.extended(
-            backgroundColor: Colors.teal[50],
+            splashColor: Colors.black12,
+            backgroundColor: Colors.grey[50],
             elevation: 0,
             icon: const Icon(
               Icons.rocket_launch,
@@ -36,12 +40,9 @@ class OnBoardingButton extends StatelessWidget {
               size: 26,
             ),
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => const Scaffold(
-                        body: Center(
-                          child: Text('hi'),
-                        ),
-                      )));
+              AppStrings.isOnBoardingDone = true;
+              CacheHelper.set(key: 'isOnBoardingDone', value: true);
+              Navigator.of(context).pushReplacementNamed(Routes.login);
             },
             label: const Text(
               'Let\'s go',

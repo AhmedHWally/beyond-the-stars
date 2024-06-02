@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:beyond_the_stars/core/constants/strings.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -41,7 +42,10 @@ class _SplashScreenState extends State<SplashScreen>
               onLoaded: (complete) {
                 _splashController.duration = complete.duration;
                 _splashController.forward().whenComplete(() {
-                  Navigator.of(context).pushReplacementNamed(Routes.onboarding);
+                  AppStrings.isOnBoardingDone == true
+                      ? Navigator.of(context).pushReplacementNamed(Routes.login)
+                      : Navigator.of(context)
+                          .pushReplacementNamed(Routes.onboarding);
                 });
               },
             ),

@@ -1,0 +1,6 @@
+import 'package:beyond_the_stars/core/helpers/cache_helper.dart';
+
+class AppStrings {
+  static bool isOnBoardingDone =
+      CacheHelper.get(key: 'isOnBoardingDone') ?? false;
+}
