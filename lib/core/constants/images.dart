@@ -4,4 +4,5 @@ class AppImages {
   static const onBoardingThree = 'assets/images/onBoarding3.jpeg';
   static const loginLottie = 'assets/images/loginLottie.json';
   static const registerLottie = 'assets/images/registerLottie.json';
+  static const authBackGround = 'assets/images/authBackGround.jpeg';
 }

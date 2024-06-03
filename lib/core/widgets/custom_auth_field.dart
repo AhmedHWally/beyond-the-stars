@@ -1,18 +1,19 @@
+import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomAuthField extends StatefulWidget {
-  const CustomAuthField(
-      {super.key,
-      this.isSecureNeeded = false,
-      required this.hint,
-      required this.icon,
-      this.keyboardType,
-      this.textInputAction
-      //this.validator,
-      // required this.controller,
-      });
+  const CustomAuthField({
+    super.key,
+    this.isSecureNeeded = false,
+    required this.hint,
+    required this.icon,
+    this.keyboardType,
+    this.textInputAction,
+    this.validator,
+    // required this.controller,
+  });
   //final TextEditingController? controller;
-  //final String? Function(String?)? validator;
+  final String? Function(String?)? validator;
   final IconData icon;
   final String hint;
   final bool isSecureNeeded;
@@ -28,8 +29,7 @@ class _CustomAuthFieldState extends State<CustomAuthField> {
   Widget build(BuildContext context) {
     return TextFormField(
       //  controller: ,
-      // validator: ,
-
+      validator: widget.validator,
       style: TextStyle(color: Colors.blue[900], fontWeight: FontWeight.bold),
       obscureText: !widget.isSecureNeeded
           ? false
@@ -38,8 +38,8 @@ class _CustomAuthFieldState extends State<CustomAuthField> {
               : false,
       textInputAction: widget.textInputAction,
       keyboardType: widget.keyboardType,
-
       decoration: InputDecoration(
+          errorStyle: AppTextStyles.textFieldErrorStyle,
           filled: true,
           fillColor: Colors.white,
           hintText: widget.hint,

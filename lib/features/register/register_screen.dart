@@ -7,10 +7,11 @@ import 'package:beyond_the_stars/core/widgets/auth_switch_row.dart';
 import 'package:beyond_the_stars/core/widgets/authentication_lottie.dart';
 
 import 'package:beyond_the_stars/features/login/ui/widgets/login_form.dart';
+import 'package:beyond_the_stars/features/register/widgets/register_form.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +29,12 @@ class LoginScreen extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
-                const AuthenticationLottie(lottie: AppImages.loginLottie),
+                const AuthenticationLottie(lottie: AppImages.registerLottie),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: FittedBox(
                     child: Text(
-                      'Welcome Back',
+                      'Let\'s launch',
                       style: AppTextStyles.style28Bold.copyWith(shadows: [
                         const Shadow(
                             color: Color(0xff0E47A1),
@@ -46,21 +47,20 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                const LoginForm(),
+                const RegisterForm(),
                 const SizedBox(
                   height: 24,
                 ),
                 AuthButton(
-                  title: 'Login',
+                  title: 'Register',
                   onPressed: () {},
                 ),
                 const SizedBox(height: 16),
                 AuthSwitchRow(
-                  description: 'Don\'t Have an account?',
-                  title: 'Register Now',
+                  description: 'Already Have an account?',
+                  title: 'Login Now',
                   onPressed: () {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                    Navigator.of(context).pushNamed(Routes.register);
+                    Navigator.of(context).pop();
                   },
                 )
               ],

@@ -45,6 +45,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       precacheImage(const AssetImage(AppImages.onBoardingOne), context);
       precacheImage(const AssetImage(AppImages.onBoardingTwo), context);
       precacheImage(const AssetImage(AppImages.onBoardingThree), context);
+      precacheImage(const AssetImage(AppImages.authBackGround), context);
     } catch (e) {
       print('could not cache images');
     }
