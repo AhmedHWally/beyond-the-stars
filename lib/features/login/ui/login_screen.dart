@@ -5,6 +5,7 @@ import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:beyond_the_stars/core/widgets/auth_button.dart';
 import 'package:beyond_the_stars/core/widgets/auth_switch_row.dart';
 import 'package:beyond_the_stars/core/widgets/authentication_lottie.dart';
+import 'package:beyond_the_stars/features/login/ui/widgets/login_bloc_consumer.dart';
 
 import 'package:beyond_the_stars/features/login/ui/widgets/login_form.dart';
 import 'package:flutter/material.dart';
@@ -50,10 +51,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                AuthButton(
-                  title: 'Login',
-                  onPressed: () {},
-                ),
+                const LoginBlocConsumer(),
                 const SizedBox(height: 16),
                 AuthSwitchRow(
                   description: 'Don\'t Have an account?',

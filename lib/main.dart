@@ -1,4 +1,5 @@
 import 'package:beyond_the_stars/beyond_the_stars_app.dart';
+import 'package:beyond_the_stars/core/dependency_injection/dependency_injection.dart';
 import 'package:beyond_the_stars/core/helpers/cache_helper.dart';
 import 'package:beyond_the_stars/firebase_options.dart';
 import 'package:device_preview/device_preview.dart';
@@ -11,6 +12,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await CacheHelper.init();
+  setupServiceLocator();
   runApp(DevicePreview(
       enabled: false, builder: (context) => const BeyondTheStarsApp()));
 }

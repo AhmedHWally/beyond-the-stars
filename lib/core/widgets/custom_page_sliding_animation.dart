@@ -4,8 +4,8 @@ class CustomPageSlidingAnimation extends PageRouteBuilder {
   final Widget child;
   CustomPageSlidingAnimation({required this.child})
       : super(
-            transitionDuration: const Duration(milliseconds: 600),
-            reverseTransitionDuration: const Duration(milliseconds: 600),
+            transitionDuration: const Duration(milliseconds: 750),
+            reverseTransitionDuration: const Duration(milliseconds: 750),
             pageBuilder: (context, animation, secondaryAnimation) => child);
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,

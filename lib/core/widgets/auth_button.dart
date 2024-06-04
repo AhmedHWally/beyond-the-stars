@@ -1,14 +1,11 @@
-import 'package:beyond_the_stars/core/functions/build_shadow.dart';
 import 'package:flutter/material.dart';
 
 class AuthButton extends StatelessWidget {
-  const AuthButton({
-    super.key,
-    required this.title,
-    this.onPressed,
-  });
+  const AuthButton(
+      {super.key, required this.title, this.onPressed, this.isLoading = false});
   final String title;
   final void Function()? onPressed;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,12 +20,21 @@ class AuthButton extends StatelessWidget {
               backgroundColor: Colors.blue.shade900,
             ),
             child: FittedBox(
-                child: Text(
-              title,
-              style: const TextStyle(shadows: [
-                Shadow(color: Colors.blue, blurRadius: 10, offset: Offset(1, 1))
-              ], fontSize: 20, fontWeight: FontWeight.bold),
-            )),
+                child: isLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      )
+                    : Text(
+                        title,
+                        style: const TextStyle(shadows: [
+                          Shadow(
+                              color: Colors.blue,
+                              blurRadius: 10,
+                              offset: Offset(1, 1))
+                        ], fontSize: 20, fontWeight: FontWeight.bold),
+                      )),
           ),
         ));
   }

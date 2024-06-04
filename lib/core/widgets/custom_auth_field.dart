@@ -10,9 +10,9 @@ class CustomAuthField extends StatefulWidget {
     this.keyboardType,
     this.textInputAction,
     this.validator,
-    // required this.controller,
+    this.controller,
   });
-  //final TextEditingController? controller;
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
   final IconData icon;
   final String hint;
@@ -28,7 +28,7 @@ class _CustomAuthFieldState extends State<CustomAuthField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      //  controller: ,
+      controller: widget.controller,
       validator: widget.validator,
       style: TextStyle(color: Colors.blue[900], fontWeight: FontWeight.bold),
       obscureText: !widget.isSecureNeeded
@@ -40,6 +40,7 @@ class _CustomAuthFieldState extends State<CustomAuthField> {
       keyboardType: widget.keyboardType,
       decoration: InputDecoration(
           errorStyle: AppTextStyles.textFieldErrorStyle,
+          errorMaxLines: 4,
           filled: true,
           fillColor: Colors.white,
           hintText: widget.hint,
