@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/errors/cloud_firestore_failure.dart';
 import 'package:beyond_the_stars/core/errors/failure.dart';

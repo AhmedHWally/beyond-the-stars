@@ -54,7 +54,6 @@ dependencies:
   lottie: ^3.1.2
   path: ^1.9.0
   permission_handler: ^11.3.1
-  rive: ^0.13.5
   shared_preferences: ^2.2.3
   shimmer: ^3.0.0
   sqflite: ^2.3.3+1

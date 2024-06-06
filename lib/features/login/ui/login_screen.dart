@@ -2,7 +2,7 @@ import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/constants/text_styles.dart';
 
 import 'package:beyond_the_stars/core/routing/routes.dart';
-import 'package:beyond_the_stars/core/widgets/auth_button.dart';
+
 import 'package:beyond_the_stars/core/widgets/auth_switch_row.dart';
 import 'package:beyond_the_stars/core/widgets/authentication_lottie.dart';
 import 'package:beyond_the_stars/features/login/ui/widgets/login_bloc_consumer.dart';

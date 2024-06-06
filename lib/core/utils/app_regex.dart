@@ -5,8 +5,7 @@ class AppRegex {
   }
 
   static bool isPasswordValid(String password) {
-    return RegExp(
-            r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$")
+    return RegExp(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{7,}$")
         .hasMatch(password);
   }
 }

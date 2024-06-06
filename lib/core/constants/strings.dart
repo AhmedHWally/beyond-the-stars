@@ -4,5 +4,5 @@ class AppStrings {
   static bool isOnBoardingDone =
       CacheHelper.get(key: 'isOnBoardingDone') ?? false;
 
-  static String userId = CacheHelper.get(key: 'userId');
+  static String userId = CacheHelper.get(key: 'userId') ?? '';
 }

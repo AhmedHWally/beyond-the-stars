@@ -1,8 +1,7 @@
 import 'package:beyond_the_stars/core/dependency_injection/dependency_injection.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:beyond_the_stars/core/widgets/custom_page_sliding_animation.dart';
-import 'package:beyond_the_stars/features/layout/layout_screen.dart';
-import 'package:beyond_the_stars/features/login/data/repo/login_repo.dart';
+import 'package:beyond_the_stars/features/layout/ui/layout_screen.dart';
 import 'package:beyond_the_stars/features/login/logic/login_bloc/login_bloc.dart';
 import 'package:beyond_the_stars/features/login/ui/login_screen.dart';
 import 'package:beyond_the_stars/features/onBoarding/ui/on_boarding_screen.dart';
