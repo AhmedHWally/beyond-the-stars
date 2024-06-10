@@ -1,3 +1,8 @@
+import 'package:beyond_the_stars/core/networking/dio_helper.dart';
+import 'package:beyond_the_stars/features/home/data/repos/launch_pad_repo.dart';
+import 'package:beyond_the_stars/features/home/data/repos/rocket_repo.dart';
+import 'package:beyond_the_stars/features/home/logic/launch_pad_bloc/launch_pad_bloc.dart';
+import 'package:beyond_the_stars/features/home/logic/rockets_bloc/rockets_bloc.dart';
 import 'package:beyond_the_stars/features/login/data/repo/login_repo.dart';
 import 'package:beyond_the_stars/features/login/logic/login_bloc/login_bloc.dart';
 import 'package:beyond_the_stars/features/register/data/repos/register_repo.dart';
@@ -46,4 +51,19 @@ void setupServiceLocator() {
   );
 
   getIt.registerFactory<LoginBloc>(() => LoginBloc(getIt.get<LoginRepo>()));
+
+  // networking
+  getIt.registerLazySingleton<DioHelper>(() => DioHelper());
+
+  // rockets
+  getIt.registerLazySingleton<RocketRepo>(
+      () => RocketRepo(dioHelper: getIt.get<DioHelper>()));
+  getIt
+      .registerFactory<RocketsBloc>(() => RocketsBloc(getIt.get<RocketRepo>()));
+
+  // launch pads
+  getIt.registerLazySingleton<LaunchPadRepo>(
+      () => LaunchPadRepo(dioHelper: getIt.get<DioHelper>()));
+  getIt.registerFactory<LaunchPadBloc>(
+      () => LaunchPadBloc(getIt.get<LaunchPadRepo>()));
 }

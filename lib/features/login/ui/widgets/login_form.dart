@@ -38,8 +38,6 @@ class LoginForm extends StatelessWidget {
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Password must not be empty';
-                  } else if (!AppRegex.isPasswordValid(value)) {
-                    return 'password must be at least 7 characters long and contain (1 lowercase letter, 1 uppercase letter, 1 number)';
                   } else {
                     return null;
                   }

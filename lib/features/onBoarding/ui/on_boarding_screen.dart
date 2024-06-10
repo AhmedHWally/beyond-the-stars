@@ -41,14 +41,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   void didChangeDependencies() {
-    try {
-      precacheImage(const AssetImage(AppImages.onBoardingOne), context);
-      precacheImage(const AssetImage(AppImages.onBoardingTwo), context);
-      precacheImage(const AssetImage(AppImages.onBoardingThree), context);
-      precacheImage(const AssetImage(AppImages.authBackGround), context);
-    } catch (e) {
-      print('could not cache images');
-    }
+    precacheImage(const AssetImage(AppImages.onBoardingOne), context);
+    precacheImage(const AssetImage(AppImages.onBoardingTwo), context);
+    precacheImage(const AssetImage(AppImages.onBoardingThree), context);
 
     super.didChangeDependencies();
   }

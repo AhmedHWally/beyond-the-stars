@@ -1,7 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/constants/strings.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,6 +20,12 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     _splashController = AnimationController(vsync: this);
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    precacheImage(const AssetImage(AppImages.authBackGround), context);
+    super.didChangeDependencies();
   }
 
   @override
@@ -42,6 +50,9 @@ class _SplashScreenState extends State<SplashScreen>
               onLoaded: (complete) {
                 _splashController.duration = complete.duration * 0.9;
                 _splashController.forward().whenComplete(() {
+                  SystemChrome.setSystemUIOverlayStyle(
+                      const SystemUiOverlayStyle(
+                          statusBarColor: Colors.transparent));
                   AppStrings.isOnBoardingDone == true
                       ? AppStrings.userId == ''
                           ? Navigator.of(context)

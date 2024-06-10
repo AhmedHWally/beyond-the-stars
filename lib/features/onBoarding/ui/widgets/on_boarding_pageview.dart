@@ -41,7 +41,7 @@ class OnBoardingPageview extends StatelessWidget {
               ),
               Text(
                 onboardingItems[index].subtitle,
-                style: AppTextStyles.style18W600,
+                style: AppTextStyles.style20W600,
               )
             ],
           ),
