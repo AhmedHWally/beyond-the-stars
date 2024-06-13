@@ -1,16 +1,10 @@
 # beyond_the_stars
 
-A new Flutter project.
+A Flutter project that uses spacex api to provide users with informations about rockets and crew and much more 
+as well as using firebase for authentication and storing data.
+this project is currently under development.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+this is a link shows the work done till now
+https://drive.google.com/file/d/1z1mc8YZXgt9hcoLI1Eep9fTK7Ea-eB-5/view?usp=drive_link
