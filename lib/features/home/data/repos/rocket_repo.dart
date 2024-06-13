@@ -16,7 +16,7 @@ class RocketRepo {
   Future<Either<Failure, List<RocketModel>>> getAllRockets() async {
     try {
       List<RocketModel> rockets =
-          await RocketsAndLaunchpadsCacheHelper.getCachedRocketsData();
+          RocketsAndLaunchpadsCacheHelper.getCachedRocketsData();
       if (rockets.isNotEmpty) {
         log('data stored');
         return right(rockets);

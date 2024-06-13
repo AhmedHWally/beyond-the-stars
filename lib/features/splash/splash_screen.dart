@@ -25,6 +25,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void didChangeDependencies() {
     precacheImage(const AssetImage(AppImages.authBackGround), context);
+    precacheImage(const AssetImage(AppImages.rocketBackGround), context);
     super.didChangeDependencies();
   }
 
@@ -50,9 +51,6 @@ class _SplashScreenState extends State<SplashScreen>
               onLoaded: (complete) {
                 _splashController.duration = complete.duration * 0.9;
                 _splashController.forward().whenComplete(() {
-                  SystemChrome.setSystemUIOverlayStyle(
-                      const SystemUiOverlayStyle(
-                          statusBarColor: Colors.transparent));
                   AppStrings.isOnBoardingDone == true
                       ? AppStrings.userId == ''
                           ? Navigator.of(context)

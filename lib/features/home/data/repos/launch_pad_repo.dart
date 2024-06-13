@@ -16,7 +16,7 @@ class LaunchPadRepo {
   Future<Either<Failure, List<LaunchPadModel>>> getAllLaunchPads() async {
     try {
       List<LaunchPadModel> launchPads =
-          await RocketsAndLaunchpadsCacheHelper.getCachedLaunchPadData();
+          RocketsAndLaunchpadsCacheHelper.getCachedLaunchPadData();
       if (launchPads.isNotEmpty) {
         log('launcehs stored');
         return right(launchPads);

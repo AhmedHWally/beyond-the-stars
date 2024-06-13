@@ -1,9 +1,6 @@
-import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/features/home/data/models/launch_pad_model/launch_pad_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class LaunchpadItem extends StatelessWidget {
   const LaunchpadItem({super.key, required this.launchPad});
