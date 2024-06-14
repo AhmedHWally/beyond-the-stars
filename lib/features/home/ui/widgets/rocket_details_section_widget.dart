@@ -4,8 +4,8 @@ import 'package:beyond_the_stars/features/home/data/models/rocket_model/rocket_m
 import 'package:beyond_the_stars/features/home/ui/widgets/display_details_row.dart';
 import 'package:flutter/material.dart';
 
-class DetailsSectionWidget extends StatelessWidget {
-  const DetailsSectionWidget({super.key, required this.rocket});
+class RocketDetailsSectionWidget extends StatelessWidget {
+  const RocketDetailsSectionWidget({super.key, required this.rocket});
   final RocketModel rocket;
 
   @override
@@ -39,6 +39,9 @@ class DetailsSectionWidget extends StatelessWidget {
         buildDivider(),
         DisplayDetailsRow(
             title: "Mass (kg)", value: '${rocket.mass?.kg ?? 'un known'}'),
+        const SizedBox(
+          height: 8,
+        )
       ],
     );
   }

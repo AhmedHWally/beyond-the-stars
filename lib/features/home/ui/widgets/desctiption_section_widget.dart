@@ -4,9 +4,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class DescriptionSectionWidget extends StatefulWidget {
   const DescriptionSectionWidget(
-      {super.key, required this.descriptionText, required this.rocketUrl});
+      {super.key, required this.descriptionText, this.rocketUrl});
   final String descriptionText;
-  final String rocketUrl;
+  final String? rocketUrl;
   @override
   State<DescriptionSectionWidget> createState() =>
       _DescriptionSectionWidgetState();
@@ -30,8 +30,11 @@ class _DescriptionSectionWidgetState extends State<DescriptionSectionWidget> {
           duration: const Duration(milliseconds: 300),
           alignment: Alignment.topCenter,
           child: Container(
-            padding:
-                const EdgeInsets.only(top: 12, right: 10, bottom: 6, left: 10),
+            padding: const EdgeInsets.only(
+              top: 12,
+              right: 10,
+              bottom: 6,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -55,13 +58,13 @@ class _DescriptionSectionWidgetState extends State<DescriptionSectionWidget> {
                       color: Colors.white,
                       iconSize: 32,
                     ),
-                    if (_showFullText)
+                    if (_showFullText && widget.rocketUrl != null)
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white54,
                               foregroundColor: Colors.white),
                           onPressed: () async {
-                            Uri url = Uri.parse(widget.rocketUrl);
+                            Uri url = Uri.parse(widget.rocketUrl!);
                             try {
                               await launchUrl(url);
                             } catch (e) {

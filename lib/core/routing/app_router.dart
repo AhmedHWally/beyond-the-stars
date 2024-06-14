@@ -1,9 +1,11 @@
 import 'package:beyond_the_stars/core/dependency_injection/dependency_injection.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:beyond_the_stars/core/widgets/custom_page_sliding_animation.dart';
+import 'package:beyond_the_stars/features/home/data/models/launch_pad_model/launch_pad_model.dart';
 import 'package:beyond_the_stars/features/home/data/models/rocket_model/rocket_model.dart';
 import 'package:beyond_the_stars/features/home/logic/launch_pad_bloc/launch_pad_bloc.dart';
 import 'package:beyond_the_stars/features/home/logic/rockets_bloc/rockets_bloc.dart';
+import 'package:beyond_the_stars/features/home/ui/screens/launchpad_details_screen.dart';
 import 'package:beyond_the_stars/features/home/ui/screens/rocket_details_screen.dart';
 import 'package:beyond_the_stars/features/layout/ui/layout_screen.dart';
 import 'package:beyond_the_stars/features/login/logic/login_bloc/login_bloc.dart';
@@ -59,6 +61,12 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (context) => RocketDetailsScreen(
                   rocket: rocketData,
+                ));
+      case Routes.launchPadDetails:
+        final launcpadData = settings.arguments as LaunchPadModel;
+        return MaterialPageRoute(
+            builder: (context) => LaunchpadDetailsScreen(
+                  launchPad: launcpadData,
                 ));
     }
     return null;
