@@ -20,6 +20,10 @@ class DioHelper {
     ));
   }
 
+  Future<Response> get({required String endPoint}) async {
+    return await dio.get(endPoint);
+  }
+
   Future<List<RocketModel>> getAllRockets() async {
     var response = await dio.get(ApiConstants.rockets);
     List<RocketModel> rockets = (response.data as List<dynamic>)

@@ -8,6 +8,8 @@ import 'package:beyond_the_stars/features/login/logic/login_bloc/login_bloc.dart
 import 'package:beyond_the_stars/features/register/data/repos/register_repo.dart';
 import 'package:beyond_the_stars/features/register/logic/add_user_to_firestore_bloc.dart/add_user_to_fire_store_bloc.dart';
 import 'package:beyond_the_stars/features/register/logic/register_bloc/register_bloc.dart';
+import 'package:beyond_the_stars/features/ships/data/repos/ships_repo.dart';
+import 'package:beyond_the_stars/features/ships/logic/ships_bloc/ships_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -66,4 +68,10 @@ void setupServiceLocator() {
       () => LaunchPadRepo(dioHelper: getIt.get<DioHelper>()));
   getIt.registerFactory<LaunchPadBloc>(
       () => LaunchPadBloc(getIt.get<LaunchPadRepo>()));
+
+  // ships
+  getIt.registerLazySingleton<ShipsRepo>(
+    () => ShipsRepo(dioHelper: getIt.get<DioHelper>()),
+  );
+  getIt.registerFactory<ShipsBloc>(() => ShipsBloc(getIt.get<ShipsRepo>()));
 }

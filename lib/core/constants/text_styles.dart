@@ -26,6 +26,13 @@ class AppTextStyles {
       shadows: [
         Shadow(color: Colors.black54, offset: Offset(2, 2), blurRadius: 2)
       ]);
+  static const TextStyle style18W600 = TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      shadows: [
+        Shadow(color: Colors.black54, offset: Offset(2, 2), blurRadius: 2)
+      ]);
   static const TextStyle style24W600 = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w600,

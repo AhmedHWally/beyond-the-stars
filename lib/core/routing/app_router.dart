@@ -14,6 +14,7 @@ import 'package:beyond_the_stars/features/onBoarding/ui/on_boarding_screen.dart'
 import 'package:beyond_the_stars/features/register/logic/add_user_to_firestore_bloc.dart/add_user_to_fire_store_bloc.dart';
 import 'package:beyond_the_stars/features/register/logic/register_bloc/register_bloc.dart';
 import 'package:beyond_the_stars/features/register/ui/register_screen.dart';
+import 'package:beyond_the_stars/features/ships/ui/ships_screen.dart';
 import 'package:beyond_the_stars/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,6 +69,9 @@ class AppRouter {
             builder: (context) => LaunchpadDetailsScreen(
                   launchPad: launcpadData,
                 ));
+
+      case Routes.ships:
+        return MaterialPageRoute(builder: (context) => const ShipsScreen());
     }
     return null;
   }

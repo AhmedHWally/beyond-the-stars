@@ -7,6 +7,8 @@ class CacheHelper {
     _preferences = await SharedPreferences.getInstance();
   }
 
+  CacheHelper._();
+
   static Future<void> set({required String key, required dynamic value}) async {
     if (value is double) {
       await _preferences.setDouble(key, value);

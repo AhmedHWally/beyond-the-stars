@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:beyond_the_stars/core/constants/images.dart';
+import 'package:beyond_the_stars/features/company_info/ui/company_info_screen.dart';
 import 'package:beyond_the_stars/features/home/ui/screens/home_screen.dart';
 import 'package:beyond_the_stars/features/layout/constants/layout_widget_constants.dart';
 import 'package:beyond_the_stars/features/layout/ui/widgets/bottom_nav_bar_icon.dart';
@@ -18,7 +19,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   int currentIndex = 2;
   List<Widget> screens = [
     const Text('test'),
-    const Text('test'),
+    const CompanyInfoScreen(),
     const HomeScreen(),
     const Text('test'),
     const Text('test')
