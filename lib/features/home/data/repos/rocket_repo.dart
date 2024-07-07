@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:beyond_the_stars/core/errors/failure.dart';
 import 'package:beyond_the_stars/core/errors/server_failure.dart';
+import 'package:beyond_the_stars/core/networking/api_constants.dart';
 import 'package:beyond_the_stars/core/networking/dio_helper.dart';
 import 'package:beyond_the_stars/core/utils/rockets_and_launchpads_cache_helper.dart';
 import 'package:beyond_the_stars/features/home/data/models/rocket_model/rocket_model.dart';
@@ -21,7 +22,10 @@ class RocketRepo {
         log('data stored');
         return right(rockets);
       }
-      rockets = await dioHelper.getAllRockets();
+      final response = await dioHelper.get(endPoint: ApiConstants.rockets);
+      rockets = (response.data as List<dynamic>)
+          .map((rocket) => RocketModel.fromJson(rocket))
+          .toList();
       RocketsAndLaunchpadsCacheHelper.cacheRocketsData(rockets);
       return right(rockets);
     } catch (e) {

@@ -19,7 +19,10 @@ class LaunchpadDetailsScreen extends StatelessWidget {
         body: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            CustomFloatingSliverAppBar(launchPad: launchPad),
+            CustomFloatingSliverAppBar(
+              title: launchPad.name,
+              image: launchPad.images?.large?[0],
+            ),
             SliverPadding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
               sliver: SliverToBoxAdapter(

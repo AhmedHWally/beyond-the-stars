@@ -1,4 +1,6 @@
 import 'package:beyond_the_stars/core/networking/dio_helper.dart';
+import 'package:beyond_the_stars/features/crew/data/repos/crew_repo.dart';
+import 'package:beyond_the_stars/features/crew/logic/crew_bloc/crew_bloc.dart';
 import 'package:beyond_the_stars/features/home/data/repos/launch_pad_repo.dart';
 import 'package:beyond_the_stars/features/home/data/repos/rocket_repo.dart';
 import 'package:beyond_the_stars/features/home/logic/launch_pad_bloc/launch_pad_bloc.dart';
@@ -74,4 +76,11 @@ void setupServiceLocator() {
     () => ShipsRepo(dioHelper: getIt.get<DioHelper>()),
   );
   getIt.registerFactory<ShipsBloc>(() => ShipsBloc(getIt.get<ShipsRepo>()));
+
+  // crew
+
+  getIt.registerLazySingleton<CrewRepo>(
+    () => CrewRepo(dioHelper: getIt.get<DioHelper>()),
+  );
+  getIt.registerFactory<CrewBloc>(() => CrewBloc(getIt.get<CrewRepo>()));
 }

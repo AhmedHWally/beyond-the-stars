@@ -1,16 +1,15 @@
+import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/constants/text_styles.dart';
-import 'package:beyond_the_stars/features/home/data/models/launch_pad_model/launch_pad_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomFloatingSliverAppBar extends StatelessWidget {
-  const CustomFloatingSliverAppBar({
-    super.key,
-    required this.launchPad,
-  });
+  const CustomFloatingSliverAppBar(
+      {super.key, required this.title, required this.image, this.style});
 
-  final LaunchPadModel launchPad;
-
+  final String? title;
+  final String? image;
+  final TextStyle? style;
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -30,11 +29,15 @@ class CustomFloatingSliverAppBar extends StatelessWidget {
       expandedHeight: MediaQuery.sizeOf(context).height * 0.25,
       flexibleSpace: FlexibleSpaceBar(
         title: Text(
-          launchPad.name ?? '',
-          style: AppTextStyles.style20W600,
+          title ?? '',
+          style: style ?? AppTextStyles.style20W600,
         ),
         background: CachedNetworkImage(
-          imageUrl: launchPad.images!.large![0],
+          imageUrl: image ?? '',
+          errorWidget: (context, url, error) => Image.asset(
+            AppImages.noImage,
+            fit: BoxFit.cover,
+          ),
           fit: BoxFit.cover,
         ),
       ),

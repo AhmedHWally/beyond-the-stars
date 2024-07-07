@@ -20,23 +20,8 @@ class DioHelper {
     ));
   }
 
-  Future<Response> get({required String endPoint}) async {
-    return await dio.get(endPoint);
-  }
-
-  Future<List<RocketModel>> getAllRockets() async {
-    var response = await dio.get(ApiConstants.rockets);
-    List<RocketModel> rockets = (response.data as List<dynamic>)
-        .map((rocket) => RocketModel.fromJson(rocket))
-        .toList();
-    return rockets;
-  }
-
-  Future<List<LaunchPadModel>> getAllLaunchPads() async {
-    var response = await dio.get(ApiConstants.launchpads);
-    List<LaunchPadModel> launchpads = (response.data as List<dynamic>)
-        .map((launchPad) => LaunchPadModel.fromJson(launchPad))
-        .toList();
-    return launchpads;
+  Future<Response> get(
+      {required String endPoint, Map<String, dynamic>? queryParameters}) async {
+    return await dio.get(endPoint, queryParameters: queryParameters);
   }
 }

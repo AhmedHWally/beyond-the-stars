@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:beyond_the_stars/core/errors/failure.dart';
 import 'package:beyond_the_stars/core/errors/server_failure.dart';
+import 'package:beyond_the_stars/core/networking/api_constants.dart';
 import 'package:beyond_the_stars/core/networking/dio_helper.dart';
 import 'package:beyond_the_stars/core/utils/rockets_and_launchpads_cache_helper.dart';
 import 'package:beyond_the_stars/features/home/data/models/launch_pad_model/launch_pad_model.dart';
@@ -21,7 +22,12 @@ class LaunchPadRepo {
         log('launcehs stored');
         return right(launchPads);
       }
-      launchPads = await dioHelper.getAllLaunchPads();
+
+      final response = await dioHelper.get(endPoint: ApiConstants.launchpads);
+      launchPads = (response.data as List<dynamic>)
+          .map((launchPad) => LaunchPadModel.fromJson(launchPad))
+          .toList();
+
       RocketsAndLaunchpadsCacheHelper.cacheLaunchPadData(launchPads);
       return right(launchPads);
     } catch (e) {

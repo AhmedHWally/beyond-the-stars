@@ -39,7 +39,7 @@ class CompanyInfoScreen extends StatelessWidget {
           CompanyInfoItem(
             companyInfoModel: companyInfo[1],
             onTap: () {
-              print('1');
+              Navigator.of(context).pushNamed(Routes.crewScreen);
             },
           ),
           CompanyInfoItem(

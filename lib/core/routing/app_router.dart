@@ -1,6 +1,10 @@
 import 'package:beyond_the_stars/core/dependency_injection/dependency_injection.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:beyond_the_stars/core/widgets/custom_page_sliding_animation.dart';
+import 'package:beyond_the_stars/features/crew/data/models/crew_model.dart';
+import 'package:beyond_the_stars/features/crew/logic/crew_bloc/crew_bloc.dart';
+import 'package:beyond_the_stars/features/crew/ui/crew_details_screen.dart';
+import 'package:beyond_the_stars/features/crew/ui/crew_screen.dart';
 import 'package:beyond_the_stars/features/home/data/models/launch_pad_model/launch_pad_model.dart';
 import 'package:beyond_the_stars/features/home/data/models/rocket_model/rocket_model.dart';
 import 'package:beyond_the_stars/features/home/logic/launch_pad_bloc/launch_pad_bloc.dart';
@@ -14,6 +18,8 @@ import 'package:beyond_the_stars/features/onBoarding/ui/on_boarding_screen.dart'
 import 'package:beyond_the_stars/features/register/logic/add_user_to_firestore_bloc.dart/add_user_to_fire_store_bloc.dart';
 import 'package:beyond_the_stars/features/register/logic/register_bloc/register_bloc.dart';
 import 'package:beyond_the_stars/features/register/ui/register_screen.dart';
+import 'package:beyond_the_stars/features/ships/data/models/ships_model.dart';
+import 'package:beyond_the_stars/features/ships/ui/ship_details_screen.dart';
 import 'package:beyond_the_stars/features/ships/ui/ships_screen.dart';
 import 'package:beyond_the_stars/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +78,32 @@ class AppRouter {
 
       case Routes.ships:
         return MaterialPageRoute(builder: (context) => const ShipsScreen());
+
+      case Routes.shipDetails:
+        final ShipsModel shipDetails = settings.arguments as ShipsModel;
+        return MaterialPageRoute(
+            builder: (context) => ShipDetailsScreen(
+                  ship: shipDetails,
+                ));
+
+      case Routes.crewScreen:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt.get<CrewBloc>()..add(LoadCrew()),
+                  child: const CrewScreen(),
+                ));
+      case Routes.crewDetailsScreen:
+        final crewData = settings.arguments as CrewModel;
+        return MaterialPageRoute(
+            builder: (context) => CrewDetailsScreen(crewPerson: crewData));
+      default:
+        return MaterialPageRoute(
+          builder: (context) => const Scaffold(
+            body: Center(
+              child: Text(" Route does Not Exist"),
+            ),
+          ),
+        );
     }
-    return null;
   }
 }
