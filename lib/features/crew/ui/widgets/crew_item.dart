@@ -1,7 +1,6 @@
 import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
-import 'package:beyond_the_stars/core/widgets/image_loading_failure_widget.dart';
 import 'package:beyond_the_stars/features/crew/data/models/crew_model.dart';
 import 'package:beyond_the_stars/features/home/ui/widgets/rocket_loading_shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';

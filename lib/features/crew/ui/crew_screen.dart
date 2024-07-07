@@ -35,7 +35,7 @@ class CrewScreen extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsetsDirectional.symmetric(
                         horizontal: 16,
-                        vertical: 24,
+                        vertical: 28,
                       ),
                       child: GridView.builder(
                           physics: const BouncingScrollPhysics(),
