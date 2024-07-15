@@ -1,14 +1,17 @@
 import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/features/home/ui/widgets/rocket_loading_shimmer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ShipImage extends StatelessWidget {
   const ShipImage({
     super.key,
     required this.shipImage,
+    required this.shipId,
   });
 
   final String shipImage;
+  final String shipId;
 
   @override
   Widget build(BuildContext context) {
@@ -21,27 +24,20 @@ class ShipImage extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(8),
           child: SizedBox(
-            width: MediaQuery.sizeOf(context).width * .35,
+            width: MediaQuery.sizeOf(context).width * .325,
             height: MediaQuery.sizeOf(context).height * .175,
             child: AspectRatio(
               aspectRatio: 1,
-              child: Image.network(
-                shipImage,
-                fit: BoxFit.cover,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes!
-                          : null,
-                    ),
-                  );
-                },
-                errorBuilder: (context, error, stackTrace) => Image.asset(
-                  AppImages.noImage,
+              child: Hero(
+                tag: shipId,
+                child: CachedNetworkImage(
+                  imageUrl: shipImage,
                   fit: BoxFit.cover,
+                  placeholder: (context, url) => const CustomLoadingShimmer(),
+                  errorWidget: (context, error, stackTrace) => Image.asset(
+                    AppImages.noImage,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

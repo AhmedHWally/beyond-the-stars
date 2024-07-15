@@ -1,7 +1,7 @@
-class CompanyInfoModel {
+class CompanySectionsModel {
   final String title, image;
 
-  const CompanyInfoModel({
+  const CompanySectionsModel({
     required this.title,
     required this.image,
   });

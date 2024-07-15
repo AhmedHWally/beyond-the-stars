@@ -19,27 +19,33 @@ class ShipCard extends StatelessWidget {
           color: const Color(0xff5A72A0),
           child: Row(
             children: [
-              ShipImage(shipImage: ship.image ?? ''),
+              ShipImage(
+                shipImage: ship.image ?? '',
+                shipId: ship.id ?? '',
+              ),
               const SizedBox(
-                width: 8,
+                width: 6,
               ),
               Expanded(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    ship.name ?? '',
-                    style: AppTextStyles.style18W600,
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Text('🌎${ship.homePort ?? ''}'),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  RowIsActive(isActive: ship.active ?? false)
-                ],
+                  child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      ship.name ?? '',
+                      style: AppTextStyles.style18W600,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Text('🌎${ship.homePort ?? ''}'),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    RowIsActive(isActive: ship.active ?? false)
+                  ],
+                ),
               ))
             ],
           ),

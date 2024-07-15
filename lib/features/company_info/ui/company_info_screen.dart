@@ -1,57 +1,54 @@
-import 'package:beyond_the_stars/core/routing/routes.dart';
-import 'package:beyond_the_stars/features/company_info/models/company_info_model.dart';
-import 'package:beyond_the_stars/features/company_info/ui/widgets/company_info_item.dart';
+import 'package:beyond_the_stars/core/constants/images.dart';
+import 'package:beyond_the_stars/core/constants/text_styles.dart';
+import 'package:beyond_the_stars/features/company_info/logic/company_info_bloc/company_info_bloc.dart';
+import 'package:beyond_the_stars/features/company_info/ui/widgets/company_info_screen_body.dart';
+import 'package:beyond_the_stars/features/ships/ui/widgets/go_back_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class CompanyInfoScreen extends StatelessWidget {
   const CompanyInfoScreen({super.key});
 
-  final List<CompanyInfoModel> companyInfo = const [
-    CompanyInfoModel(
-      title: 'Ships',
-      image: 'assets/images/ships.jpg',
-    ),
-    CompanyInfoModel(
-      title: 'Crew',
-      image: 'assets/images/crew.jpg',
-    ),
-    CompanyInfoModel(
-      title: 'About',
-      image: 'assets/images/about.jpg',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 20,
+    return Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(AppImages.rocketBackGround), fit: BoxFit.fill)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
+          child: Stack(
+            children: [
+              BlocBuilder<CompanyInfoBloc, CompanyInfoState>(
+                  builder: (context, state) {
+                if (state is CompanyInfoFailure) {
+                  return Center(
+                    child: Text(
+                      state.errMessage,
+                      style: AppTextStyles.style20W600,
+                      textAlign: TextAlign.center,
+                    ),
+                  );
+                } else if (state is CompanyInfoSuccess) {
+                  return CompanyInfoScreenBody(companyInfo: state.companyInfo);
+                } else {
+                  return const Center(
+                    child: SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: SpinKitWave(
+                        color: Colors.white,
+                      ),
+                    ),
+                  );
+                }
+              }),
+              const Positioned(left: 16, child: GoBackButton())
+            ],
           ),
-          CompanyInfoItem(
-            companyInfoModel: companyInfo[0],
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.ships);
-            },
-          ),
-          CompanyInfoItem(
-            companyInfoModel: companyInfo[1],
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.crewScreen);
-            },
-          ),
-          CompanyInfoItem(
-            companyInfoModel: companyInfo[2],
-            onTap: () {
-              print('2');
-            },
-          ),
-          const SizedBox(
-            height: 80,
-          )
-        ],
+        ),
       ),
     );
   }

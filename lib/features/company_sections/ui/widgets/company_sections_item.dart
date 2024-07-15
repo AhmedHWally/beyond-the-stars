@@ -1,11 +1,11 @@
 import 'package:beyond_the_stars/core/constants/text_styles.dart';
-import 'package:beyond_the_stars/features/company_info/models/company_info_model.dart';
+import 'package:beyond_the_stars/features/company_sections/models/company_sections_model.dart';
 import 'package:flutter/material.dart';
 
-class CompanyInfoItem extends StatelessWidget {
-  const CompanyInfoItem(
+class CompanySectionsItem extends StatelessWidget {
+  const CompanySectionsItem(
       {super.key, required this.companyInfoModel, this.onTap});
-  final CompanyInfoModel companyInfoModel;
+  final CompanySectionsModel companyInfoModel;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {

@@ -17,7 +17,7 @@ class GoBackButton extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.grey.shade200.withOpacity(0.3),
+            color: Colors.black.withOpacity(0.3),
           ),
           child: IconButton(
             onPressed: () {

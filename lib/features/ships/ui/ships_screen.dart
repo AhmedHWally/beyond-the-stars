@@ -104,8 +104,11 @@ class _ShipsScreenState extends State<ShipsScreen> {
                             );
                     } else if (state is LoadShipsFailed) {
                       return Center(
-                        child: Text(state.errorMessage,
-                            style: AppTextStyles.style20W600),
+                        child: Text(
+                          state.errorMessage,
+                          style: AppTextStyles.style20W600,
+                          textAlign: TextAlign.center,
+                        ),
                       );
                     } else {
                       return const Center(

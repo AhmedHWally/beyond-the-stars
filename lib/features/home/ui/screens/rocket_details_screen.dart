@@ -64,7 +64,10 @@ class RocketDetailsScreen extends StatelessWidget {
                         descriptionText: rocket.description ?? '',
                         rocketUrl: rocket.wikipedia ?? '',
                       ),
-                      RocketDetailsSectionWidget(rocket: rocket)
+                      RocketDetailsSectionWidget(rocket: rocket),
+                      const SizedBox(
+                        height: 60,
+                      )
                     ],
                   ),
                 ),
