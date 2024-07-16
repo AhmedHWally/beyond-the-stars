@@ -14,6 +14,6 @@ class UploadProfileImageFailure extends UploadProfileImageState {
 
 class UploadProfileImageSuccess extends UploadProfileImageState {
   final String imageUrl;
-
-  UploadProfileImageSuccess({required this.imageUrl});
+  final String imagePath;
+  UploadProfileImageSuccess({required this.imageUrl, required this.imagePath});
 }

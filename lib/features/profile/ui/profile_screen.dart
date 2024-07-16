@@ -28,6 +28,7 @@ class ProfileScreen extends StatelessWidget {
             ),
           );
         } else if (state is GetProfileDataSuccess) {
+          print(state.profileData.image);
           return Column(
             children: [
               const SizedBox(

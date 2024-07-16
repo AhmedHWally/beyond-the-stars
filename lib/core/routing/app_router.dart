@@ -7,6 +7,7 @@ import 'package:beyond_the_stars/features/crew/data/models/crew_model.dart';
 import 'package:beyond_the_stars/features/crew/logic/crew_bloc/crew_bloc.dart';
 import 'package:beyond_the_stars/features/crew/ui/crew_details_screen.dart';
 import 'package:beyond_the_stars/features/crew/ui/crew_screen.dart';
+import 'package:beyond_the_stars/features/edit_profile/logic/edit_profile_bloc/edit_profile_bloc.dart';
 import 'package:beyond_the_stars/features/edit_profile/logic/upload_profile_image_bloc/upload_profile_image_bloc.dart';
 import 'package:beyond_the_stars/features/home/data/models/launch_pad_model/launch_pad_model.dart';
 import 'package:beyond_the_stars/features/home/data/models/rocket_model/rocket_model.dart';
@@ -67,9 +68,6 @@ class AppRouter {
                           getIt.get<RocketsBloc>()..add(GetAllRocketsEvent())),
                   BlocProvider(
                       create: (context) =>
-                          getIt.get<ProfileBloc>()..add(GetProfileDataEvent())),
-                  BlocProvider(
-                      create: (context) =>
                           getIt.get<LaunchPadBloc>()..add(GetLaunchPadsEvent()))
                 ], child: const LayoutScreen()));
 
@@ -89,8 +87,14 @@ class AppRouter {
       case Routes.editProfileScreen:
         final profile = settings.arguments as ProfileModel;
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => getIt.get<UploadProfileImageBloc>(),
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                        create: (context) =>
+                            getIt.get<UploadProfileImageBloc>()),
+                    BlocProvider(
+                        create: (context) => getIt.get<EditProfileBloc>())
+                  ],
                   child: EditProfileScreen(
                     profile: profile,
                   ),

@@ -13,13 +13,16 @@ class UploadProfileImageBloc
   _uploadProfileImage(UploadProfileImageEvent event,
       Emitter<UploadProfileImageState> emit) async {
     var result = await userImageRepo.pickImage();
-    result.fold((left) {}, (imageModel) async {
+    await result.fold((left) async {}, (imageModel) async {
+      emit(UploadProfileImageLoading());
       var uploadImageResult =
           await userImageRepo.updateProfileImage(imageModel: imageModel);
       uploadImageResult.fold(
           (failre) =>
               emit(UploadProfileImageFailure(errMessage: failre.message)),
-          (imageUrl) => emit(UploadProfileImageSuccess(imageUrl: imageUrl)));
+          (imageData) => emit(UploadProfileImageSuccess(
+              imageUrl: imageData['imageUrl'] as String,
+              imagePath: imageData['imagePath'] as String)));
     });
   }
 }

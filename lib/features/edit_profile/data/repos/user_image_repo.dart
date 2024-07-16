@@ -24,14 +24,14 @@ class UserImageRepo {
     return right(ImageModel(file: image, imagePath: imagePath));
   }
 
-  Future<Either<Failure, String>> updateProfileImage(
+  Future<Either<Failure, Map<String, String>>> updateProfileImage(
       {required ImageModel imageModel}) async {
     try {
       Reference reference =
           firebaseStorage.ref('profilePictures').child(imageModel.imagePath);
       await reference.putFile(imageModel.file);
       String imageUrl = await reference.getDownloadURL();
-      return Right(imageUrl);
+      return Right({'imageUrl': imageUrl, 'imagePath': imageModel.imagePath});
     } catch (error) {
       if (error is FirebaseException) {
         return Left(FirebaseStorageFailure.fromFirebaseCoreException(error));
