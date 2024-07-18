@@ -1,3 +1,4 @@
+import 'package:beyond_the_stars/core/helpers/database_helper.dart';
 import 'package:beyond_the_stars/core/networking/dio_helper.dart';
 import 'package:beyond_the_stars/features/company_info/data/repos/company_info_repo.dart';
 import 'package:beyond_the_stars/features/company_info/logic/company_info_bloc/company_info_bloc.dart';
@@ -19,6 +20,8 @@ import 'package:beyond_the_stars/features/profile/logic/profile_bloc/profile_blo
 import 'package:beyond_the_stars/features/register/data/repos/register_repo.dart';
 import 'package:beyond_the_stars/features/register/logic/add_user_to_firestore_bloc.dart/add_user_to_fire_store_bloc.dart';
 import 'package:beyond_the_stars/features/register/logic/register_bloc/register_bloc.dart';
+import 'package:beyond_the_stars/features/saved_items/data/repos/local_database_repo.dart';
+import 'package:beyond_the_stars/features/saved_items/logic/save_items_bloc/save_items_bloc.dart';
 import 'package:beyond_the_stars/features/ships/data/repos/ships_repo.dart';
 import 'package:beyond_the_stars/features/ships/logic/ships_bloc/ships_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -126,4 +129,13 @@ void setupServiceLocator() {
       () => UploadProfileImageBloc(getIt.get<UserImageRepo>()));
   getIt.registerFactory<EditProfileBloc>(
       () => EditProfileBloc(getIt.get<EditProfileRepo>()));
+
+  //local database
+
+  getIt.registerLazySingleton<DataBaseHelper>(() => DataBaseHelper());
+  getIt.registerLazySingleton<LocalDatabaseRepo>(
+    () => LocalDatabaseRepo(dataBaseHelper: getIt.get<DataBaseHelper>()),
+  );
+  getIt.registerFactory<SaveItemsBloc>(
+      () => SaveItemsBloc(getIt.get<LocalDatabaseRepo>()));
 }

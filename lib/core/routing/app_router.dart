@@ -1,5 +1,6 @@
 import 'package:beyond_the_stars/core/dependency_injection/dependency_injection.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
+import 'package:beyond_the_stars/core/widgets/custom_page_fade_animation.dart';
 import 'package:beyond_the_stars/core/widgets/custom_page_sliding_animation.dart';
 import 'package:beyond_the_stars/features/company_info/logic/company_info_bloc/company_info_bloc.dart';
 import 'package:beyond_the_stars/features/company_info/ui/company_info_screen.dart';
@@ -20,18 +21,17 @@ import 'package:beyond_the_stars/features/login/logic/login_bloc/login_bloc.dart
 import 'package:beyond_the_stars/features/login/ui/login_screen.dart';
 import 'package:beyond_the_stars/features/onBoarding/ui/on_boarding_screen.dart';
 import 'package:beyond_the_stars/features/profile/data/models/profile_model.dart';
-import 'package:beyond_the_stars/features/profile/logic/profile_bloc/profile_bloc.dart';
 import 'package:beyond_the_stars/features/edit_profile/ui/edit_profile_screen.dart';
 import 'package:beyond_the_stars/features/register/logic/add_user_to_firestore_bloc.dart/add_user_to_fire_store_bloc.dart';
 import 'package:beyond_the_stars/features/register/logic/register_bloc/register_bloc.dart';
 import 'package:beyond_the_stars/features/register/ui/register_screen.dart';
+import 'package:beyond_the_stars/features/saved_items/logic/save_items_bloc/save_items_bloc.dart';
 import 'package:beyond_the_stars/features/ships/data/models/ships_model.dart';
 import 'package:beyond_the_stars/features/ships/ui/ship_details_screen.dart';
 import 'package:beyond_the_stars/features/ships/ui/ships_screen.dart';
 import 'package:beyond_the_stars/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:path/path.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -67,38 +67,47 @@ class AppRouter {
                       create: (context) =>
                           getIt.get<RocketsBloc>()..add(GetAllRocketsEvent())),
                   BlocProvider(
-                      create: (context) =>
-                          getIt.get<LaunchPadBloc>()..add(GetLaunchPadsEvent()))
+                      create: (context) => getIt.get<LaunchPadBloc>()
+                        ..add(GetLaunchPadsEvent())),
+                  BlocProvider(create: (context) => getIt.get<SaveItemsBloc>())
                 ], child: const LayoutScreen()));
 
       case Routes.rocketDetails:
         final rocketData = settings.arguments as RocketModel;
         return MaterialPageRoute(
-            builder: (context) => RocketDetailsScreen(
-                  rocket: rocketData,
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt.get<SaveItemsBloc>()
+                    ..add(IsItemSavedEvent(title: rocketData.name.toString())),
+                  child: RocketDetailsScreen(
+                    rocket: rocketData,
+                  ),
                 ));
       case Routes.launchPadDetails:
         final launcpadData = settings.arguments as LaunchPadModel;
         return MaterialPageRoute(
-            builder: (context) => LaunchpadDetailsScreen(
-                  launchPad: launcpadData,
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt.get<SaveItemsBloc>()
+                    ..add(IsItemSavedEvent(
+                        title: launcpadData.fullName.toString())),
+                  child: LaunchpadDetailsScreen(
+                    launchPad: launcpadData,
+                  ),
                 ));
 
       case Routes.editProfileScreen:
         final profile = settings.arguments as ProfileModel;
-        return MaterialPageRoute(
-            builder: (context) => MultiBlocProvider(
-                  providers: [
-                    BlocProvider(
-                        create: (context) =>
-                            getIt.get<UploadProfileImageBloc>()),
-                    BlocProvider(
-                        create: (context) => getIt.get<EditProfileBloc>())
-                  ],
-                  child: EditProfileScreen(
-                    profile: profile,
-                  ),
-                ));
+        return CustomPageScaleAnimation(
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                  create: (context) => getIt.get<UploadProfileImageBloc>()),
+              BlocProvider(create: (context) => getIt.get<EditProfileBloc>())
+            ],
+            child: EditProfileScreen(
+              profile: profile,
+            ),
+          ),
+        );
 
       case Routes.ships:
         return MaterialPageRoute(builder: (context) => const ShipsScreen());
@@ -106,8 +115,12 @@ class AppRouter {
       case Routes.shipDetails:
         final ShipsModel shipDetails = settings.arguments as ShipsModel;
         return MaterialPageRoute(
-            builder: (context) => ShipDetailsScreen(
-                  ship: shipDetails,
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt.get<SaveItemsBloc>()
+                    ..add(IsItemSavedEvent(title: shipDetails.name.toString())),
+                  child: ShipDetailsScreen(
+                    ship: shipDetails,
+                  ),
                 ));
 
       case Routes.crewScreen:

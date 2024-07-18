@@ -1,7 +1,7 @@
 class Routes {
   static const String onboarding = '/onboarding';
   static const String companyInfo = '/company_info';
-  static const String splashScreen = '/splash-screen';
+  static const String splashScreen = 'splash-screen';
   static const String layout = '/layout';
   static const String rocketDetails = '/rocket_details';
   static const String launchPadDetails = '/launch-pads-details';

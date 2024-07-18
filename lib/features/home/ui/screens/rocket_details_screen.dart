@@ -1,14 +1,15 @@
-import 'dart:ui';
-
 import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/constants/text_styles.dart';
-import 'package:beyond_the_stars/features/home/data/models/launch_pad_model/launch_pad_model.dart';
+import 'package:beyond_the_stars/core/widgets/favorite_floating_action_button.dart';
 import 'package:beyond_the_stars/features/home/data/models/rocket_model/rocket_model.dart';
 import 'package:beyond_the_stars/features/home/ui/widgets/desctiption_section_widget.dart';
 import 'package:beyond_the_stars/features/home/ui/widgets/rocket_details_section_widget.dart';
 import 'package:beyond_the_stars/features/home/ui/widgets/rocket_images_slider.dart';
+import 'package:beyond_the_stars/features/saved_items/data/models/saved_item_model.dart';
+import 'package:beyond_the_stars/features/saved_items/logic/save_items_bloc/save_items_bloc.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RocketDetailsScreen extends StatelessWidget {
   const RocketDetailsScreen({super.key, required this.rocket});
@@ -66,7 +67,7 @@ class RocketDetailsScreen extends StatelessWidget {
                       ),
                       RocketDetailsSectionWidget(rocket: rocket),
                       const SizedBox(
-                        height: 60,
+                        height: 58,
                       )
                     ],
                   ),
@@ -75,6 +76,29 @@ class RocketDetailsScreen extends StatelessWidget {
             ],
           ),
         ),
+        floatingActionButton: BlocBuilder<SaveItemsBloc, SaveItemsState>(
+            builder: (context, state) {
+          if (state is IsItemSaved) {
+            return FavoriteFloatingActionButton(
+              onPressed: () {
+                context.read<SaveItemsBloc>().add(AddOrRemoveItemEvent(
+                    isSaved: state.isItemSaved,
+                    savedItem: SavedItemModel(
+                        id: null,
+                        title: rocket.name.toString(),
+                        imageUrl: rocket.flickrImages![0].toString(),
+                        country: rocket.country.toString(),
+                        type: "Rocket")));
+              },
+              icon: state.isItemSaved ? Icons.star : Icons.star_border_outlined,
+            );
+          } else {
+            return FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: const Color(0xff5A72A0),
+            );
+          }
+        }),
       ),
     );
   }

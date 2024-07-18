@@ -28,6 +28,7 @@ class EditProfileScreen extends StatelessWidget {
           if (didPop) {
             return;
           }
+          log('done cool');
           if (context.read<UploadProfileImageBloc>().state
               is! UploadProfileImageLoading) {
             if (context.read<EditProfileBloc>().imagePath.isNotEmpty) {
@@ -212,6 +213,7 @@ class EditProfileScreen extends StatelessWidget {
                             child:
                                 BlocListener<EditProfileBloc, EditProfileState>(
                               listener: (context, state) {
+                                log(state.toString());
                                 if (state is EditProfileSuccess) {
                                   Navigator.of(context).pop();
                                   context

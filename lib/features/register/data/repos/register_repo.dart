@@ -29,6 +29,7 @@ class RegisterRepo {
         image: AppImages.profileImage,
         id: response.user?.uid ?? '',
       );
+
       return Right(userModel);
     } catch (error) {
       if (error is FirebaseAuthException) {

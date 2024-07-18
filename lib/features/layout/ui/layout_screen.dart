@@ -7,6 +7,7 @@ import 'package:beyond_the_stars/features/layout/constants/layout_widget_constan
 import 'package:beyond_the_stars/features/layout/ui/widgets/bottom_nav_bar_icon.dart';
 import 'package:beyond_the_stars/features/layout/ui/widgets/custom_animated_bar.dart';
 import 'package:beyond_the_stars/features/profile/ui/profile_screen.dart';
+import 'package:beyond_the_stars/features/saved_items/ui/saved_items_screen.dart';
 import 'package:flutter/material.dart';
 
 class LayoutScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class LayoutScreen extends StatefulWidget {
 class _LayoutScreenState extends State<LayoutScreen> {
   int currentIndex = 2;
   List<Widget> screens = [
-    const Text('test'),
+    const SavedItemsScreen(),
     const CompanySectionsScreen(),
     const HomeScreen(),
     const Text('test'),
@@ -37,10 +38,12 @@ class _LayoutScreenState extends State<LayoutScreen> {
         backgroundColor: Colors.transparent,
         body: SafeArea(
           bottom: false,
-          child: IndexedStack(
-            index: currentIndex,
-            children: screens,
-          ),
+          child: currentIndex == 0
+              ? const SavedItemsScreen()
+              : IndexedStack(
+                  index: currentIndex,
+                  children: screens,
+                ),
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.only(bottom: 16, left: 24, right: 24),
