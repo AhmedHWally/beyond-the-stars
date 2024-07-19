@@ -5,4 +5,6 @@ class AppStrings {
       CacheHelper.get(key: 'isOnBoardingDone') ?? false;
 
   static String userId = CacheHelper.get(key: 'userId') ?? '';
+
+  static String isVerified = CacheHelper.get(key: 'isVerified') ?? '';
 }

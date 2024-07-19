@@ -51,12 +51,13 @@ class _SplashScreenState extends State<SplashScreen>
               onLoaded: (complete) {
                 _splashController.duration = complete.duration * 0.9;
                 _splashController.forward().whenComplete(() {
+                  print(AppStrings.isVerified);
                   AppStrings.isOnBoardingDone == true
-                      ? AppStrings.userId == ''
+                      ? AppStrings.userId != '' && AppStrings.isVerified != ''
                           ? Navigator.of(context)
-                              .pushReplacementNamed(Routes.login)
-                          : Navigator.of(context)
                               .pushReplacementNamed(Routes.layout)
+                          : Navigator.of(context)
+                              .pushReplacementNamed(Routes.login)
                       : Navigator.of(context)
                           .pushReplacementNamed(Routes.onboarding);
                 });

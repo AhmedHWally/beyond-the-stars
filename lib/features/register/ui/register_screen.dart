@@ -1,13 +1,27 @@
+import 'dart:developer';
+
 import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/core/widgets/auth_switch_row.dart';
 import 'package:beyond_the_stars/core/widgets/authentication_lottie.dart';
 import 'package:beyond_the_stars/features/register/ui/widgets/register_bloc_consumer.dart';
 import 'package:beyond_the_stars/features/register/ui/widgets/register_form.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  @override
+  void initState() {
+    log(FirebaseAuth.instance.currentUser.toString());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

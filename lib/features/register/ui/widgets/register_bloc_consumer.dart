@@ -22,7 +22,7 @@ class RegisterBlocConsumer extends StatelessWidget {
             context
                 .read<AddUserToFireStoreBloc>()
                 .add(AddUserToFireStoreEvent(userModel: state.userModel));
-            showToast(text: 'Register done successfully');
+            showToast(text: 'please verify your email address');
           } else if (state is RegisterFailure) {
             showToast(text: state.errorMessage);
           }
@@ -31,7 +31,7 @@ class RegisterBlocConsumer extends StatelessWidget {
             listener: (context, state) {
           if (state is AddUserSuccess || state is AddUserFailure) {
             Navigator.of(context)
-                .pushNamedAndRemoveUntil(Routes.layout, (route) => false);
+                .pushNamedAndRemoveUntil(Routes.login, (route) => false);
           }
         })
       ],

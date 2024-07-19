@@ -1,11 +1,13 @@
 import 'dart:developer';
 
+import 'package:beyond_the_stars/core/constants/images.dart';
+import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/features/saved_items/logic/save_items_bloc/save_items_bloc.dart';
 import 'package:beyond_the_stars/features/saved_items/ui/widgets/saved_item_card.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:lottie/lottie.dart';
 
 class SavedItemsScreen extends StatefulWidget {
   const SavedItemsScreen({super.key});
@@ -14,12 +16,22 @@ class SavedItemsScreen extends StatefulWidget {
   State<SavedItemsScreen> createState() => _SavedItemsScreenState();
 }
 
-class _SavedItemsScreenState extends State<SavedItemsScreen> {
+class _SavedItemsScreenState extends State<SavedItemsScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  bool isLottieAnimationDone = false;
   @override
   void initState() {
-    log('helllo my friend');
     context.read<SaveItemsBloc>().add(GetSavedItemsEvent());
+    animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 700));
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -29,8 +41,35 @@ class _SavedItemsScreenState extends State<SavedItemsScreen> {
       if (state is GetSavedItemsSuccess) {
         log('success');
         if (state.savedItems.isEmpty) {
-          return const Center(
-            child: Text('no saved items'),
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                  width: MediaQuery.sizeOf(context).width,
+                  height: MediaQuery.sizeOf(context).height * 0.35,
+                  child: LottieBuilder.asset(
+                    AppImages.emptyLottie,
+                    repeat: false,
+                    controller: animationController,
+                    onLoaded: (composition) {
+                      animationController.duration = composition.duration * 0.7;
+                      animationController.forward().then((value) {
+                        setState(() {
+                          isLottieAnimationDone = true;
+                        });
+                      });
+                    },
+                  )),
+              AnimatedOpacity(
+                duration: const Duration(milliseconds: 500),
+                opacity: isLottieAnimationDone ? 1 : 0,
+                child: const Text(
+                  'No saved items',
+                  style: AppTextStyles.style26W600,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
           );
         } else {
           return ListView.builder(

@@ -23,7 +23,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
     const SavedItemsScreen(),
     const CompanySectionsScreen(),
     const HomeScreen(),
-    const Text('test'),
     const ProfileScreen()
   ];
 

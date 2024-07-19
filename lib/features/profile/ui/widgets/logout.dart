@@ -1,5 +1,7 @@
+import 'package:beyond_the_stars/core/constants/strings.dart';
 import 'package:beyond_the_stars/core/dependency_injection/dependency_injection.dart';
 import 'package:beyond_the_stars/core/functions/show_toast.dart';
+import 'package:beyond_the_stars/core/helpers/cache_helper.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:beyond_the_stars/features/profile/logic/logout_bloc/logout_bloc.dart';
 import 'package:beyond_the_stars/features/profile/ui/widgets/custom_profilescreen_component.dart';
@@ -63,6 +65,12 @@ class LogoutButton extends StatelessWidget {
                                         context
                                             .read<LogoutBloc>()
                                             .add(LogoutUserEvent());
+                                        CacheHelper.set(
+                                            key: 'isVerified', value: '');
+                                        AppStrings.isVerified = '';
+                                        CacheHelper.set(
+                                            key: 'userId', value: '');
+                                        AppStrings.userId = '';
                                       },
                                       child: const Text(
                                         'Yes',
