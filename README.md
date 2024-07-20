@@ -6,8 +6,8 @@ this project is currently under development.
 
 ## Getting Started
 
-this is a link shows the work done till now
-https://drive.google.com/file/d/1z1mc8YZXgt9hcoLI1Eep9fTK7Ea-eB-5/view?usp=drive_link
+watch the full app here :
+https://drive.google.com/file/d/1EWpngeEXP5Ykd6V3QRQSl250ih_CuK1z/view?usp=drive_link
 
 ![WhatsApp Image 2024-07-20 at 16 09 50_7b78e5e3](https://github.com/user-attachments/assets/0f77fbc7-f5cc-4121-a052-72f207042aa5)
 ![WhatsApp Image 2024-07-20 at 16 09 50_e55dde7f](https://github.com/user-attachments/assets/2d50136c-270f-4eff-a232-44cd1927689b)
