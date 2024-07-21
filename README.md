@@ -7,8 +7,9 @@ this project is currently under development.
 ## Getting Started
 
 watch the full app here :
-https://drive.google.com/file/d/1EWpngeEXP5Ykd6V3QRQSl250ih_CuK1z/view?usp=drive_link
-
+https://drive.google.com/file/d/1phk54OWz9T4PDJCWpVo1UNy0kF7S2Ug8/view?usp=drive_link  <br> 
+watch the app on boarding simple animation here :
+https://drive.google.com/file/d/1xif0BWdk5QXclAWgyE4vheWj6LUMteDZ/view?usp=drive_link
 ![WhatsApp Image 2024-07-20 at 16 09 50_7b78e5e3](https://github.com/user-attachments/assets/0f77fbc7-f5cc-4121-a052-72f207042aa5)
 ![WhatsApp Image 2024-07-20 at 16 09 50_e55dde7f](https://github.com/user-attachments/assets/2d50136c-270f-4eff-a232-44cd1927689b)
 ![WhatsApp Image 2024-07-20 at 16 09 50_58257eb3](https://github.com/user-attachments/assets/3820fa9d-d346-460f-b868-22bac4c987e7)
