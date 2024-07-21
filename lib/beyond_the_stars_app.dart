@@ -2,7 +2,6 @@ import 'package:beyond_the_stars/core/dependency_injection/dependency_injection.
 import 'package:beyond_the_stars/core/routing/app_router.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:beyond_the_stars/features/profile/logic/profile_bloc/profile_bloc.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,8 +19,6 @@ class BeyondTheStarsApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt.get<ProfileBloc>(),
       child: MaterialApp(
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.dark,

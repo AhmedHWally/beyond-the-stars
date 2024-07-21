@@ -63,9 +63,14 @@ class _SavedItemsScreenState extends State<SavedItemsScreen>
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
                 opacity: isLottieAnimationDone ? 1 : 0,
-                child: const Text(
+                child: Text(
                   'No saved items',
-                  style: AppTextStyles.style26W600,
+                  style: AppTextStyles.style26W600.copyWith(shadows: [
+                    const Shadow(
+                        color: Color(0xff0E47A1),
+                        offset: Offset(2, 2),
+                        blurRadius: 1)
+                  ]),
                   textAlign: TextAlign.center,
                 ),
               ),
