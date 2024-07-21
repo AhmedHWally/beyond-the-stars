@@ -1,14 +1,11 @@
 import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:beyond_the_stars/features/home/ui/widgets/rocket_loading_shimmer.dart';
-import 'package:beyond_the_stars/features/profile/logic/logout_bloc/logout_bloc.dart';
 import 'package:beyond_the_stars/features/profile/logic/profile_bloc/profile_bloc.dart';
 import 'package:beyond_the_stars/features/profile/ui/widgets/custom_profilescreen_component.dart';
 import 'package:beyond_the_stars/features/profile/ui/widgets/logout.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/features/saved_items/logic/save_items_bloc/save_items_bloc.dart';
@@ -39,7 +37,6 @@ class _SavedItemsScreenState extends State<SavedItemsScreen>
     return BlocBuilder<SaveItemsBloc, SaveItemsState>(
         builder: (context, state) {
       if (state is GetSavedItemsSuccess) {
-        log('success');
         if (state.savedItems.isEmpty) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,

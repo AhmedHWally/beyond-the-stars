@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beyond_the_stars/core/errors/failure.dart';
 import 'package:beyond_the_stars/core/errors/server_failure.dart';
 import 'package:beyond_the_stars/core/networking/api_constants.dart';

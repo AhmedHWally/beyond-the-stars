@@ -1,4 +1,3 @@
-import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/features/onBoarding/model/on_boarding_itemmodel.dart';
 import 'package:beyond_the_stars/features/onBoarding/ui/widgets/on_boarding_item.dart';
 import 'package:flutter/material.dart';

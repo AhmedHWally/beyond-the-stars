@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beyond_the_stars/core/constants/strings.dart';
 import 'package:beyond_the_stars/core/helpers/cache_helper.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
@@ -24,7 +22,7 @@ class _OnBoardingButtonState extends State<OnBoardingButton>
     animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 500));
     animation = Tween<double>(begin: 0, end: 1).animate(animationController);
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(milliseconds: 2500), () {
       animationController.forward();
     });
 
@@ -33,9 +31,8 @@ class _OnBoardingButtonState extends State<OnBoardingButton>
 
   @override
   void didUpdateWidget(covariant OnBoardingButton oldWidget) {
-    log('message');
     animationController.value = 0;
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(milliseconds: 2500), () {
       animationController.forward();
     });
     super.didUpdateWidget(oldWidget);

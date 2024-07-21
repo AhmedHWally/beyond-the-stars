@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beyond_the_stars/features/home/ui/widgets/home_screen_body.dart';
 import 'package:beyond_the_stars/features/profile/logic/profile_bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';

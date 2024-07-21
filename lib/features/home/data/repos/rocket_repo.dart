@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beyond_the_stars/core/errors/failure.dart';
 import 'package:beyond_the_stars/core/errors/server_failure.dart';
 import 'package:beyond_the_stars/core/networking/api_constants.dart';
@@ -19,7 +17,6 @@ class RocketRepo {
       List<RocketModel> rockets =
           RocketsAndLaunchpadsCacheHelper.getCachedRocketsData();
       if (rockets.isNotEmpty) {
-        log('data stored');
         return right(rockets);
       }
       final response = await dioHelper.get(endPoint: ApiConstants.rockets);

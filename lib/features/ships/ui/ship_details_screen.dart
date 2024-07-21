@@ -1,11 +1,8 @@
 import 'package:beyond_the_stars/core/constants/images.dart';
-import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/core/widgets/favorite_floating_action_button.dart';
-import 'package:beyond_the_stars/features/home/ui/widgets/custom_floating_sliver_appbar.dart';
 import 'package:beyond_the_stars/features/saved_items/data/models/saved_item_model.dart';
 import 'package:beyond_the_stars/features/saved_items/logic/save_items_bloc/save_items_bloc.dart';
 import 'package:beyond_the_stars/features/ships/data/models/ships_model.dart';
-import 'package:beyond_the_stars/features/ships/ui/widgets/custom_ship_data_row.dart';
 import 'package:beyond_the_stars/features/ships/ui/widgets/ship_informations.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

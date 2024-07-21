@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beyond_the_stars/features/saved_items/data/models/saved_item_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -49,7 +47,7 @@ class DataBaseHelper {
     List<Map<String, dynamic>> savedItems = await database.query(
       tableName,
     );
-    log(savedItems.length.toString());
+
     List<SavedItemModel> allItems = [];
     if (savedItems.isNotEmpty) {
       for (var item in savedItems) {

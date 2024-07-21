@@ -3,7 +3,6 @@ import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/constants/strings.dart';
 import 'package:beyond_the_stars/core/routing/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {

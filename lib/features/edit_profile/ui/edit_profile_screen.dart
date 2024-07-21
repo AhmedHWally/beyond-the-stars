@@ -1,11 +1,8 @@
-import 'dart:developer';
-
 import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/functions/show_toast.dart';
 import 'package:beyond_the_stars/features/edit_profile/logic/edit_profile_bloc/edit_profile_bloc.dart';
 import 'package:beyond_the_stars/features/edit_profile/logic/upload_profile_image_bloc/upload_profile_image_bloc.dart';
 import 'package:beyond_the_stars/features/edit_profile/ui/widgets/edit_image_bloc_consumer.dart';
-import 'package:beyond_the_stars/features/edit_profile/ui/widgets/edit_profile_image_container.dart';
 import 'package:beyond_the_stars/features/edit_profile/ui/widgets/edit_username_form.dart';
 
 import 'package:beyond_the_stars/features/profile/data/models/profile_model.dart';
@@ -13,7 +10,6 @@ import 'package:beyond_the_stars/features/profile/logic/profile_bloc/profile_blo
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer/shimmer.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key, required this.profile});
@@ -100,7 +96,6 @@ class EditProfileScreen extends StatelessWidget {
                                       .validate() &&
                                   context.read<UploadProfileImageBloc>().state
                                       is! UploadProfileImageLoading) {
-                                log(context.read<EditProfileBloc>().name);
                                 context
                                     .read<EditProfileBloc>()
                                     .add(SaveEditedDataEvent());
@@ -111,7 +106,6 @@ class EditProfileScreen extends StatelessWidget {
                             child:
                                 BlocListener<EditProfileBloc, EditProfileState>(
                               listener: (context, state) {
-                                log(state.toString());
                                 if (state is EditProfileSuccess) {
                                   Navigator.of(context).pop();
                                   context

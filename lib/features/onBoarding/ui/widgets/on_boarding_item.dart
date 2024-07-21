@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/features/onBoarding/model/on_boarding_itemmodel.dart';
 import 'package:flutter/material.dart';
@@ -30,20 +28,19 @@ class _OnBoardingItemState extends State<OnBoardingItem>
     imageAnimationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 10));
     imageScaleAnimation =
-        Tween<double>(begin: 1, end: 1.5).animate(imageAnimationController);
-    textAnimationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    subTitleAnimationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+        Tween<double>(begin: 1, end: 1.25).animate(imageAnimationController);
+    textAnimationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1500));
+    subTitleAnimationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1500));
     subTitleTextAnimation =
         Tween<double>(begin: 0, end: 1).animate(subTitleAnimationController);
     opactyTextAnimation =
         Tween<double>(begin: 0, end: 1).animate(textAnimationController);
     imageAnimationController.repeat(reverse: true);
-    Future.delayed(const Duration(milliseconds: 750), () {
-      textAnimationController.forward().whenComplete(() {
-        subTitleAnimationController.forward();
-      });
+
+    textAnimationController.forward().whenComplete(() {
+      subTitleAnimationController.forward();
     });
 
     super.initState();

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beyond_the_stars/core/constants/images.dart';
 import 'package:beyond_the_stars/core/constants/text_styles.dart';
 import 'package:beyond_the_stars/features/home/ui/widgets/rocket_loading_shimmer.dart';
@@ -80,7 +78,6 @@ class SavedItemCard extends StatelessWidget {
                       BlocListener<SaveItemsBloc, SaveItemsState>(
                           listener: (context, state) {
                             if (state is IsItemSaved) {
-                              log('done save or delete ');
                               context
                                   .read<SaveItemsBloc>()
                                   .add(GetSavedItemsEvent());
